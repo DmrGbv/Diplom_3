@@ -7,14 +7,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class LoginPage {
+public class RegistrationPage {
     WebDriver driver;
     WebDriverWait wait;
     String currentUrl;
     String actualEmail;
-    final String REGISTRATION_PAGE = "https://stellarburgers.education-services.ru/register";
+    static final String REGISTRATION_PAGE = "https://stellarburgers.education-services.ru/register";
 
-    public LoginPage(WebDriver driver) {
+    public RegistrationPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         this.currentUrl = currentUrl;
@@ -72,5 +72,12 @@ public class LoginPage {
 
     public boolean isVisibleIncorrectPasswordError() {
         return driver.findElement(incorrectPasswordError).isDisplayed();
+    }
+
+//  Локатор кнопки Войти на странице регистрации
+    private By registrationLoginButton = By.xpath("//a[contains(text(),'Войти')]");
+
+    public void clickRegistrationLoginButton() {
+        driver.findElement(registrationLoginButton).click();
     }
 }
