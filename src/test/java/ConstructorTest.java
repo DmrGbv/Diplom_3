@@ -1,5 +1,6 @@
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
+import org.junit.After;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
@@ -42,5 +43,10 @@ public class ConstructorTest extends BaseUITest{
         mainPage.clickBunsButton();
 
         assertTrue("Переход в раздел 'Булки' не произошел", mainPage.isActiveBunsButton());
+    }
+
+    @After
+    public void tearDown() {
+        driver.quit();
     }
 }

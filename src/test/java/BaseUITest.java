@@ -1,5 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.After;
+import io.restassured.RestAssured;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -7,6 +7,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import pages.LoginPage;
 import pages.MainPage;
 import pages.RegistrationPage;
+
+import static data.EndpointsAndURIData.BASE_URI;
 
 public class BaseUITest {
     WebDriver driver;
@@ -32,10 +34,7 @@ public class BaseUITest {
         loginPage = new LoginPage(driver);
         registrationPage = new RegistrationPage(driver);
         mainPage = new MainPage(driver);
-    }
 
-    @After
-    public void tearDown() {
-        driver.quit();
+        RestAssured.baseURI = BASE_URI;
     }
 }

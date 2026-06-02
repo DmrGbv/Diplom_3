@@ -1,10 +1,12 @@
 import com.github.javafaker.Faker;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
+import static steps.UserStepsAPI.*;
 
 public class RegistrationTest extends BaseUITest {
     String name;
@@ -53,6 +55,15 @@ public class RegistrationTest extends BaseUITest {
         registrationPage.clickRegistrationButton();
 
         assertTrue("Ошибка о некорректном пароле не отображается", registrationPage.isVisibleIncorrectPasswordError());
+    }
+
+    @After
+    public void tearDown() {
+        String accessToken = getUserAccessTokenAPI(email, password);
+        if (accessToken != null) {
+            deleteUserAPI(accessToken);
+        }
+        driver.quit();
     }
 }
 
