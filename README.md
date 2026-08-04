@@ -1,4 +1,4 @@
-# Автоматизация UI-тестирования Stellar Burgers
+# Автоматизация UI-тестирования [Stellar Burgers](https://stellarburgers.education-services.ru/)
 
 ## О проекте
 
